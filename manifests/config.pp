@@ -1,4 +1,4 @@
-define postfix::config($ensure = 'present', $value) {
+define postfix::config($value, $ensure = 'present') {
   $changes = $ensure ? {
     'absent' => "rm ${name}",
     default  => "set ${name} ${value}",

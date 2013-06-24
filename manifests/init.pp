@@ -4,19 +4,19 @@ class postfix {
   }
 
   service { 'postfix':
-    ensure => true,
-    enable => true,
+    ensure  => true,
+    enable  => true,
     require => Package['postfix'],
   }
 
   file { ['/etc/postfix/main.cf', '/etc/postfix/master.cf']:
-    ensure => 'present',
-    owner => 'root',
-    group => 'root',
-    mode => 0644,
+    ensure  => 'present',
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
     content => "# managed by puppet\n",
     replace => false,
-    notify => Service['postfix'],
+    notify  => Service['postfix'],
     require => Package['postfix'],
   }
 }

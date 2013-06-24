@@ -1,13 +1,13 @@
 define postfix::service(
+  $command,
+  $type,
   $ensure = 'present',
   $service = '',
-  $type,
   $private = '-',
-  $unpriviliged = '-',
+  $unprivileged = '-',
   $chroot = '-',
   $wakeup = '-',
   $limit = 100,
-  $command
 ) {
   if (!$service) {
     $service = $name
@@ -24,7 +24,7 @@ define postfix::service(
   if ($ensure == 'absent') {
     augeas { "remove postfix master ${name}":
       context => '/files/etc/postfix/master.cf',
-      changes => "rm $existing_name",
+      changes => "rm ${existing_name}",
       notify  => Service['postfix'],
       require => File['/etc/postfix/master.cf'],
     }
