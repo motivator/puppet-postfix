@@ -9,8 +9,9 @@ define postfix::service(
   $wakeup = '-',
   $limit = 100,
 ) {
-  if (!$service) {
-    $service = $name
+  $use_service = $service ? {
+    ''      => $name,
+    default => $service,
   }
 
   $private_bool      = $private ? { true => 'y', false => 'n', default => '-' }
@@ -18,8 +19,8 @@ define postfix::service(
   $chroot_bool       = $chroot ? { true => 'y', false => 'n', default => '-' }
   $wakeup_bool       = $wakeup ? { true => 'y', false => 'n', default => '-' }
 
-  $existing_name = "${service}[type = '${type}']"
-  $new_name      = "${service}[last()]"
+  $existing_name = "${use_service}[type = '${type}']"
+  $new_name      = "${use_service}[last()]"
 
   if ($ensure == 'absent') {
     augeas { "remove postfix master ${name}":
@@ -48,7 +49,7 @@ define postfix::service(
     augeas { "add postfix master ${name}":
       context => '/files/etc/postfix/master.cf',
       changes => [
-        "set ${service}[last()+1]/type ${type}",
+        "set ${use_service}[last()+1]/type ${type}",
         "set ${new_name}/private ${private_bool}",
         "set ${new_name}/unpriviliged ${unprivileged_bool}",
         "set ${new_name}/chroot ${chroot_bool}",
