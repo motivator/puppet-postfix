@@ -3,6 +3,7 @@ class postfix(
 ) {
   package { 'postfix':
     ensure => 'present',
+    notify => Exec['rebuild postfix transport'],
   }
 
   service { 'postfix':
