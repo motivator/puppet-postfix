@@ -1,7 +1,7 @@
 class postfix(
   $transport_file = '/etc/postfix/transport',
   $service_enable = true,
-  $service_ensure = true
+  $service_ensure = 'running',
 ) {
   package { 'postfix':
     ensure => 'present',
