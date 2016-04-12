@@ -1,0 +1,15 @@
+{
+  "name": "chrisboulton-postfix",
+  "version": "0.0.3",
+  "author": "Chris Boulton <chris@chrisboulton.com>",
+  "summary": "Install and manage a Postfix based mail server",
+  "license": "MIT",
+  "source": "https://github.com/chrisboulton/puppet-postfix",
+  "project_page": "https://github.com/chrisboulton/puppet-postfix",
+  "issues_url": "https://github.com/chrisboulton/puppet-postfix/issues",
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ],
+  "data_provider": null
+}
+
