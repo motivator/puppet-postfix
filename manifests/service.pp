@@ -35,7 +35,7 @@ define postfix::service(
       changes => [
         "set ${existing_name}/type ${type}",
         "set ${existing_name}/private ${private_bool}",
-        "set ${existing_name}/unpriviliged ${unprivileged_bool}",
+        "set ${existing_name}/unprivileged ${unprivileged_bool}",
         "set ${existing_name}/chroot ${chroot_bool}",
         "set ${existing_name}/wakeup ${wakeup_bool}",
         "set ${existing_name}/limit ${limit}",
@@ -51,7 +51,7 @@ define postfix::service(
       changes => [
         "set ${use_service}[last()+1]/type ${type}",
         "set ${new_name}/private ${private_bool}",
-        "set ${new_name}/unpriviliged ${unprivileged_bool}",
+        "set ${new_name}/unprivileged ${unprivileged_bool}",
         "set ${new_name}/chroot ${chroot_bool}",
         "set ${new_name}/wakeup ${wakeup_bool}",
         "set ${new_name}/limit ${limit}",
