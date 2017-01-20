@@ -17,7 +17,6 @@ define postfix::service(
   $private_bool      = $private ? { true => 'y', false => 'n', default => '-' }
   $unprivileged_bool = $unprivileged ? { true => 'y', false => 'n', default => '-' }
   $chroot_bool       = $chroot ? { true => 'y', false => 'n', default => '-' }
-  $wakeup_bool       = $wakeup ? { true => 'y', false => 'n', default => '-' }
 
   $existing_name = "${use_service}[type = '${type}']"
   $new_name      = "${use_service}[last()]"
@@ -37,7 +36,7 @@ define postfix::service(
         "set ${existing_name}/private ${private_bool}",
         "set ${existing_name}/unprivileged ${unprivileged_bool}",
         "set ${existing_name}/chroot ${chroot_bool}",
-        "set ${existing_name}/wakeup ${wakeup_bool}",
+        "set ${existing_name}/wakeup ${wakeup}",
         "set ${existing_name}/limit ${limit}",
         "set ${existing_name}/command ${command}",
       ],
@@ -53,7 +52,7 @@ define postfix::service(
         "set ${new_name}/private ${private_bool}",
         "set ${new_name}/unprivileged ${unprivileged_bool}",
         "set ${new_name}/chroot ${chroot_bool}",
-        "set ${new_name}/wakeup ${wakeup_bool}",
+        "set ${new_name}/wakeup ${wakeup}",
         "set ${new_name}/limit ${limit}",
         "set ${new_name}/command ${command}",
       ],
