@@ -45,7 +45,7 @@ class postfix(
   }
 
   exec { 'rebuild postfix transport':
-    command     => "postmap ${transport_file}",
+    command     => "/usr/sbin/postmap ${transport_file}",
     refreshonly => true,
   }
 }
